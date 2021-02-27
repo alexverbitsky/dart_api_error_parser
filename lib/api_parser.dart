@@ -34,6 +34,10 @@ class ApiParser<E> {
         return getMessageFromCode(error.code);
       }
     } else {
+      if (error.message != null && error.message.isNotEmpty) {
+        return error.message as E;
+      }
+
       return getMessageFromCode(error.code);
     }
   }
